@@ -1,0 +1,4 @@
+CSV/3Raw/pub_sub_ingestion/*
+*.pyc
+*.swp
+
