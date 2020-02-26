@@ -11,7 +11,7 @@ Creating this repo to simplify deploying these dashboards
           <pre><code> $ pip3 install pipenv  </code></pre>
    
   2. Python libraries  
-    - using pipenv you can create a new env using requirements.txt  
-      <pre><code>This is a code block.
+    - Install all using requirements.txt  
+      <pre><code> pip3 install -r requirements.txt
       
       </code></pre>
