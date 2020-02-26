@@ -7,8 +7,7 @@ Creating this repo to simplify deploying these dashboards
 
   1. Install     
     - Python3+  
-    - pipenv
-          <pre><code> $ pip3 install pipenv  </code></pre>
+    - Condas
    
   2. Python libraries  
     - Install all using requirements.txt  
