@@ -5,5 +5,5 @@ Creating this repo to simplify deploying these dashboards
 
 ## Local setup  
 
-  1. Install 
-   -- Python3+
+  1. Install  
+   - Python3+
