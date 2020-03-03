@@ -1,0 +1,14 @@
+name: CBAS-Full
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - pandas
+  - glob2
+  - plotly
+  - pylint
+  - dash
+  - tqdm
+prefix: C:\Users\samgt\Anaconda3\envs\CBAS-Full
+
