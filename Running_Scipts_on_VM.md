@@ -1,4 +1,8 @@
+# Running scripts on Linux
+
+
 ## Tmux
+
 In the terminal use Tmux to run multiple sessions:  
       Tmux directory for shared sessions :  
       
@@ -45,3 +49,7 @@ Go to directory
 Run script
   <pre><code> python3 Ingestion_stream_Dash.py 
   </code></pre>
+
+
+
+
