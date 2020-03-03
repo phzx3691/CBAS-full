@@ -6,7 +6,4 @@ In the terminal use Tmux to run multiple sessions:
 To list open sessions (not from within session)
 tmux -S /tmp/shareds ls
 
-      <pre><code> conda env create -f environment.yml 
-      
-      </code></pre>
 
