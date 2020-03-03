@@ -16,7 +16,7 @@ ctrl-B, d to detach from the session
 
 
 
-### Ingestion script   
+### Ingestion script   start.py
 To create a session 
       <pre><code> tmux -a /tmp/shareds new -s ingest 
       </code></pre>
@@ -25,7 +25,7 @@ To attach to  the ingestion session
        </code></pre> 
       CD to directory for script 
 cd ingest/sensor-feed/
-Run script
+Run script - 
 ~/ingest/sensor-feed$ “python start.py ~/dashboard/Plotly-Dash/CSV/3Raw/ingestions_BK”
 
 
