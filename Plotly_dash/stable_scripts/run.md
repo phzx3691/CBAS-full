@@ -12,8 +12,4 @@ tmux -S /tmp/shareds ls
 
 conda env create -f environment.yml 
       
-      </code></pre>
 
-
-      <pre><code> conda env create -f environment.yml 
-      
