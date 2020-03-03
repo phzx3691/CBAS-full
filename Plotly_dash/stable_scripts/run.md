@@ -16,7 +16,7 @@ ctrl-B, d to detach from the session
 
 
 
-### Ingestion script   start.py
+### Ingestion script  ---  CBAS-full/Pub_Sub_ingestion/start.py
 To create a session 
       <pre><code> tmux -a /tmp/shareds new -s ingest 
       </code></pre>
