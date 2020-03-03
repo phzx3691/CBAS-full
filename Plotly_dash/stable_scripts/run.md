@@ -31,7 +31,7 @@ Run script -
 
 
 
-### Live stream --- Ingestion_stream_Dash.py 
+### Live stream --- CBAS-full/Plotly_dash/stable_scripts/Dash_apps/Ingestion_stream_Dash.py 
 To create a session 
        <pre><code>  tmux -a /tmp/shareds new -s livestream
        </code></pre>    
