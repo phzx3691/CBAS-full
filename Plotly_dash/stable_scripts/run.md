@@ -1,4 +1,4 @@
-### Tmux
+## Tmux
 In the terminal use Tmux to run multiple sessions:
       Tmux directory for shared sessions :
       
