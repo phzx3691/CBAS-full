@@ -10,5 +10,7 @@ dependencies:
   - pylint
   - dash
   - tqdm
+  - scipy
+  - tmux
 
 

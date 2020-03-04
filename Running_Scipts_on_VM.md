@@ -1,64 +1,122 @@
-# Running scripts on Linux VM
+# Running scripts on Linux
 
+## Running multiple terminal sessions
 
-## Environment setup /Installation
+### Tmux
 
-      Miniconda - https://docs.conda.io/en/latest/miniconda.html
-      
+Use Tmux to run multiple sessions in the terminal:  
 
+Tmux instances are run from shared directory so multiple user can access  
+      Tmux directory for shared sessions :
 
-### Using Tmux
-
-In the terminal use Tmux to run multiple sessions:  
-      Tmux directory for shared sessions :  
-      /tmp/shareds 
-      
-      all Tmux instances should be run for this direct
-      
+ ```bash
+'/tmp/shareds'
+ ```
 
 To list open sessions (not from within session)  
-      <pre><code> tmux -S /tmp/shareds ls  
-      </code></pre>
 
+```bash
+tmux -S /tmp/shareds ls
+```
 
-To attach to session (while in the session):
-      <pre><code> tmux -S /tmp/shareds attach -t [sessionName]
-      </code></pre>
-      
-ctrl-B, d to detach from the session
+To attach to session:
 
+ ```bash
+tmux -S /tmp/shareds attach -t [sessionName]
+```
 
+To detach from the session
+
+```bash
+Ctrl + B,D
+```
+
+## Plotly/Dash Scripts
 
 ### Ingestion script  ---  CBAS-full/Pub_Sub_ingestion/start.py
-To create a session 
-      <pre><code> tmux -a /tmp/shareds new -s ingest 
-      </code></pre>
-To attach to  the ingestion session
-       <pre><code>tmux -a /tmp/shareds attach-s ingest
-       </code></pre> 
-      CD to directory for script 
+
+Since this script only works w Python 2  
+
+1. New condas env with Python 2
+2. Install [PyParticleIO](https://pypi.org/project/PyParticleIO/)
+
+Create Python2.7 condas env
+
+```bash
+
+```
+
+Install PyParticleIO 0.1.0  
+
+```bash
+pip install PyParticleIO
+```
+
+---
+
+New Tmux session
+
+```bash
+tmux -a /tmp/shareds new -s ingest
+```
+
+---
+Re-activate Condas env py2
+
+---
+
+list tmux sessions 
+
+```bash
+tmux -S /tmp/shareds ls
+```
+
+
+Attach to the ingestion session
+
+```bash
+tmux -S /tmp/shareds attach -t ingest
+```
+
+---
+
+Go to directory for this script
+
+```bash
 cd ingest/sensor-feed/
-Run script - 
+```
+
+Run script -
+
+```bash
 ~/ingest/sensor-feed$ “python start.py ~/dashboard/Plotly-Dash/CSV/3Raw/ingestions_BK”
+```
 
+### Dash Live stream
 
+Live Dash app for sensor data ingested using ingestion script  
+CBAS-full/Plotly_dash/stable_scripts/Dash_apps/Ingestion_stream_Dash.py
 
+To create a session
 
-### Live stream --- CBAS-full/Plotly_dash/stable_scripts/Dash_apps/Ingestion_stream_Dash.py 
-To create a session 
-       <pre><code>  tmux -a /tmp/shareds new -s livestream
-       </code></pre>    
-       
-To attach to  the livestream session 
-       <pre><code>tmux -a /tmp/shareds attach-s livestream
-       </code></pre> 
-Go to directory 
-       <pre><code> cd dashboard/Plotly-Dash/stable_scripts/Dash_apps/
-      </code></pre>
+```bash
+tmux -a /tmp/shareds new -s livestream
+```
+
+To attach to  the livestream session
+
+```bash
+tmux -a /tmp/shareds attach-s livestream
+```
+
+Go to directory
+
+```bash
+cd dashboard/Plotly-Dash/stable_scripts/Dash_apps/
+```
+
 Run script
-  <pre><code> python3 Ingestion_stream_Dash.py 
-  </code></pre>
 
-
-
-
+```bash
+python3 Ingestion_stream_Dash.py
+```
