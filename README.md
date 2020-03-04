@@ -1,9 +1,9 @@
 # CBAS-full
 Using Particle mesh devices for environmental sensor streaming and Plotly/Dash for visualization
 
-Creating this repo to simplify deploying these dashboards
 
-## Local setup  
+
+## Local Environment Setup  
 
   1. Install     
     - Python3+  
@@ -16,3 +16,8 @@ Creating this repo to simplify deploying these dashboards
       <pre><code> conda env create -f environment.yml 
       
       </code></pre>
+
+
+## VM Environment Setup  
+
+  
