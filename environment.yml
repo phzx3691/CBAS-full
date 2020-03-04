@@ -10,5 +10,5 @@ dependencies:
   - pylint
   - dash
   - tqdm
-prefix: C:\Users\samgt\Anaconda3\envs\CBAS-Full
+
 
