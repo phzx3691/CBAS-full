@@ -1,4 +1,7 @@
-# Running scripts on Linux
+# Running scripts on Linux VM
+
+
+# Environment setup /Installation
 
 
 ## Using Tmux
