@@ -5,9 +5,13 @@ Tested on Gcloud  Debian GNU/Linux, 10 (buster) image
 
 ## Resources
 
-* [Condas Cheet Sheet](https://docs.conda.io/projects/conda/en/latest/_downloads/843d9e0198f2a193a3484886fa28163c/conda-cheatsheet.pdf)
+* [Conda Cheet Sheet](https://docs.conda.io/projects/conda/en/latest/_downloads/843d9e0198f2a193a3484886fa28163c/conda-cheatsheet.pdf)
 
-* [Tmux Cheat Sheet]()
+* [Miniconda Docs](https://docs.conda.io/en/latest/miniconda.html)
+
+* [Tmux Cheat Sheet](https://tmuxcheatsheet.com/)
+
+* [TMUX guide](https://tmuxguide.readthedocs.io/en/latest/index.html)
 
 ### Setup VM
 
@@ -16,8 +20,25 @@ Tested on Gcloud  Debian GNU/Linux, 10 (buster) image
 * Update system
 
     ```bash
-    Sudo apt-get update&&sudo apt-get update
+    sudo apt-get update&&sudo apt-get upgrade
+
+* Install wget
+
+    ```bash
+    sudo apt-get install wget
     ```
+
+* Install Git
+
+    ```bash
+    sudo apt-get install git
+    ```
+
+Clone CBAS-Full Git Repo
+
+```bash
+git clone https://github.com/phzx3691/CBAS-full.git
+```
 
 #### Download and install Miniconda
 
@@ -25,7 +46,7 @@ Tested on Gcloud  Debian GNU/Linux, 10 (buster) image
 https://docs.conda.io/en/latest/miniconda.html
 
     ```bash
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    wget https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-x86_64.sh
     ```
 
 * Then run the installation script:
@@ -34,19 +55,36 @@ https://docs.conda.io/en/latest/miniconda.html
     bash Miniconda3-latest-Linux-x86_64.sh
     ```
 
-* Run through set-up and Condas should be installed, restart terminal to finish
+* Run through set-up and Condas should be installed, restart terminal to finish install
 
-
-#### Creating an environment
-
-Use CBAS-Full.yml to create new env
+If you'd prefer that conda's base environment not be activated on startup:  
 
 ```bash
-conda env create --file CBAS_Full.yml
+    conda config --set auto_activate_base false
 ```
 
-#### Activate environment
+
+
+#### Creating environments
+
+Use environment.yml to create new env
 
 ```bash
-conda env list
+conda env create --file environment.yml
 ```
+
+Create new Py2 env for ingestion script
+
+---
+
+```bash
+conda env create --file ingestionenv.yml
+```
+
+or  
+
+```bash
+conda env create --name ingestionenv python=2.7
+```
+
+---
