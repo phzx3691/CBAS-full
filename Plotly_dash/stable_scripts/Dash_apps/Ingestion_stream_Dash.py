@@ -56,7 +56,7 @@ notes = notes["2020-01-01 ":"2020- "]
 
 #set paths
 samprt_path = ""'5T'""
-base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 print(" Base Path: " + base_path)
 home_path = os.path.dirname(os.path.dirname(base_path))
 ingest_path = os.path.join(base_path,"CSV","3Raw","From_Ingestions","ingestions_BK")
