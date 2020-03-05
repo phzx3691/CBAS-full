@@ -93,6 +93,9 @@ python2.7 start.py ~/CBAS-full/Plotly_dash/CSV/3Raw/From_Ingestio
 ns/ingestions_BK/
 ```
 
+If all is well...
+![Ingestion Scrpit Output](/png/Ingestion.jpg)
+
 ---
 
 ## Dash Live stream
