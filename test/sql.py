@@ -1,4 +1,3 @@
-
 import pymysql
 
 
@@ -6,8 +5,7 @@ import pymysql
 
 
 
-connection = 
-      pymysql.connect(host='34.67.192.90',
+connection = pymysql.connect(host='34.67.192.90',
       user='root',password='CEA299792458',
       db='sample')
 

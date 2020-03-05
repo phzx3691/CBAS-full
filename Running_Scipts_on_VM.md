@@ -2,13 +2,11 @@
 
 ## Running multiple terminal sessions usin TMUX
 
-Use Tmux to run multiple sessions in the terminal:  
+Tmux instances are run from shared directory so multiple users can access  
+Tmux directory for shared sessions :
 
-Tmux instances are run from shared directory so multiple user can access  
-      Tmux directory for shared sessions :
-
- ```bash
-'/tmp/shareds'
+ ```
+/tmp/shareds
  ```
 
 To list open sessions (not from within session)  
