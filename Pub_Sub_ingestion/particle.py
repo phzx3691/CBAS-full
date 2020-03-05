@@ -9,8 +9,9 @@ import numpy as np
 import io
 import pandas as pd
 from io import StringIO
+import config
 
-TOKEN = "a9df6ae4800e2b6f08688658760f07e90bfcdc7b"
+TOKEN = config.Particle_key
 IDS = []
 
 class Particle(Sensor):

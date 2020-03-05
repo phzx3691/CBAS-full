@@ -1,4 +1,4 @@
 Plotly_dash/CSV/3Raw/From_Ingestions/*
+Pub_Sub_ingestion/config.py
 *.pyc
 *.swp
-
