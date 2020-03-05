@@ -91,6 +91,10 @@ Run script -
 ```bash
 ~/ingest/sensor-feed$ “python start.py ~/dashboard/Plotly-Dash/CSV/3Raw/ingestions_BK”
 ```
+```bash
+python2.7 start.py ~/CBAS-full/Plotly_dash/CSV/3Raw/From_Ingestio
+ns/ingestions_BK/
+```
 
 ### Dash Live stream
 
@@ -106,7 +110,7 @@ tmux -a /tmp/shareds new -s livestream
 To attach to  the livestream session
 
 ```bash
-tmux -a /tmp/shareds attach-s livestream
+tmux -a /tmp/shareds attach -s livestream
 ```
 
 Go to directory
