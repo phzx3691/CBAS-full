@@ -31,9 +31,9 @@ To detach from the session
 Ctrl + B,D
 ```
 
-## Plotly/Dash Scripts
+# Plotly/Dash Scripts
 
-### Ingestion script  ---  CBAS-full/Pub_Sub_ingestion/start.py
+## Ingestion script  ---  CBAS-full/Pub_Sub_ingestion/start.py
 
 Since this script only works w Python 2  
 
@@ -83,20 +83,19 @@ tmux -S /tmp/shareds attach -t ingest
 Go to directory for this script
 
 ```bash
-cd ingest/sensor-feed/
+cd ~/CBAS-Full/Pub_sub.../
 ```
 
 Run script -
 
 ```bash
-~/ingest/sensor-feed$ “python start.py ~/dashboard/Plotly-Dash/CSV/3Raw/ingestions_BK”
-```
-```bash
 python2.7 start.py ~/CBAS-full/Plotly_dash/CSV/3Raw/From_Ingestio
 ns/ingestions_BK/
 ```
 
-### Dash Live stream
+---
+
+## Dash Live stream
 
 Live Dash app for sensor data ingested using ingestion script  
 CBAS-full/Plotly_dash/stable_scripts/Dash_apps/Ingestion_stream_Dash.py

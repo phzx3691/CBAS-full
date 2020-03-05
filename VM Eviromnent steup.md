@@ -15,7 +15,7 @@ Tested on Gcloud  Debian GNU/Linux, 10 (buster) image
 
 ### Setup VM
 
-#### On Initial Boot 
+#### On Initial Boot
 
 * Update system
 
@@ -52,7 +52,7 @@ https://docs.conda.io/en/latest/miniconda.html
 * Then run the installation script:
 
     ```bash
-    bash Miniconda3-latest-Linux-x86_64.sh
+    bash Miniconda2-latest-Linux-x86_64.sh
     ```
 
 * Run through set-up and Condas should be installed, restart terminal to finish install
@@ -78,13 +78,7 @@ Create new Py2 env for ingestion script
 ---
 
 ```bash
-conda env create --file ingestionenv.yml
-```
-
-or  
-
-```bash
-conda env create --name ingestionenv python=2.7
+conda env create --name py2 python=2.7
 ```
 
 ---
