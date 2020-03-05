@@ -1,4 +1,4 @@
-# Linux VM Environment Setup
+# Linux VM environment setup
 
 How-to for setting up required software/libraries to run code  
 Tested on Gcloud  Debian GNU/Linux, 10 (buster) image
@@ -13,15 +13,18 @@ Tested on Gcloud  Debian GNU/Linux, 10 (buster) image
 
 * [TMUX guide](https://tmuxguide.readthedocs.io/en/latest/index.html)
 
-### Setup VM
+---
 
-#### On Initial Boot
+## VM setup
+
+#### On initial boot
 
 * Update system
 
 ```bash
 sudo apt-get update&&sudo apt-get upgrade
 ```
+
 * Install wget
 
 ```bash
@@ -34,7 +37,7 @@ sudo apt-get install wget
 sudo apt-get install git
 ```
 
-* Clone CBAS-Full Git Repo
+* Clone CBAS-Full Git Repository
 
 ```bash
 git clone https://github.com/phzx3691/CBAS-full.git
@@ -67,7 +70,7 @@ conda config --set auto_activate_base false
 
 ---
 
-#### Creating Conda Environments
+### Creating Conda Environments
 
 ### Default Python3 Conda env for Plotly/Dash (CBAS-Full)
 
@@ -108,8 +111,8 @@ which pip2.7
 This should print something like '/usr/local/bin/pip2.7' to your stdout. If it does not print anything like this, it is not installed. In that case, install it by running:
 
 ```bash
-$ wget https://bootstrap.pypa.io/get-pip.py
-$ sudo python2.7 get-pip.py
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python2.7 get-pip.py
 ```
 
 Now, you should be all set, and

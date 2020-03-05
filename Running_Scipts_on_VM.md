@@ -1,8 +1,6 @@
 # Running scripts on Linux
 
-## Running multiple terminal sessions
-
-### Tmux
+## Running multiple terminal sessions usin TMUX
 
 Use Tmux to run multiple sessions in the terminal:  
 
