@@ -94,7 +94,7 @@ ns/ingestions_BK/
 ```
 
 If all is well...
-![Ingestion Scrpit Output](/png/Ingestion.jpg)
+![Ingestion Script Output](/png/Ingestion.jpg)
 
 ---
 
