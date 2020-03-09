@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\samgt\\Anaconda3\\envs\\CBAS-Full\\python.exe"
+    "python.pythonPath": "C:\\Users\\samgt\\Anaconda3\\envs\\CBAS-Full\\python.exe",
+    "python.dataScience.jupyterServerURI": "local"
 }

@@ -4,7 +4,7 @@ This is a python script for retrieving HOBO and Mote sensor data from the web.
 
 # Requirements
 
-- [Python 2.7+](https://www.python.org/downloads/)
+- [Python 2.7](https://www.python.org/downloads/)
 - Configured HOBO Sensor(s)
 - Configured Mote Sensor(s)
 
