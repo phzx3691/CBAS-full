@@ -4,3 +4,4 @@ test/Notebooks/sqlconfig.py
 test/sqlconfig.py
 *.pyc
 *.swp
+/env
