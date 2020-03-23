@@ -16,7 +16,7 @@ Tested on Gcloud  Debian GNU/Linux, 10 (buster) image
 ---
 
 ## VM setup
-
+****
 #### On initial boot
 
 * Update system
@@ -51,13 +51,13 @@ git clone https://github.com/phzx3691/CBAS-full.git
 https://docs.conda.io/en/latest/miniconda.html
 
 ```bash
-wget https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-x86_64.sh
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ```
 
 * Then run the installation script:
 
 ```bash
-bash Miniconda2-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
 ```
 
 * Run through set-up and Condas should be installed, restart terminal to finish install
@@ -83,6 +83,8 @@ This should be the env used for Plotly/Dash scripts
 conda env create --file environment.yml
 ```
 
+need to do the .env thing
+
 This env has all necessary libraries to run /stable_scripts and is already named "CBAS-Full"
 
 *** 
@@ -94,7 +96,7 @@ As the Ingestion script uses a library that requires Python2, (PYparticleIO) we 
 * To create new Py2 env for ingestion script
 
 ```bash
-conda env create --name py2 python=2.7
+conda create --name py2 python=2.7
 ```
 
 In order to install libraries in Python2.7, it may be necessary to install pip2.7 

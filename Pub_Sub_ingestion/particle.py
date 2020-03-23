@@ -10,6 +10,19 @@ import io
 import pandas as pd
 from io import StringIO
 import config
+import pymysql
+import sqlalchemy
+import psycopg2
+
+
+
+
+passwd = config.passwd  # From sqlconfig.py
+user = config.user  # From sqlconfig.py
+DB = 'cbas'  #name of databases to activate 
+
+
+engine = sqlalchemy.create_engine('postgresql+psycopg2://'+user+':'+passwd+'@34.68.85.80/'+DB)
 
 TOKEN = config.Particle_key
 IDS = []
@@ -83,7 +96,8 @@ class Particle(Sensor):
         print(device+":  ")
         print(df)
         df = df.set_index(pd.DatetimeIndex(df['timestamp']))
-        #df.drop('timestamp', axis=1, inplace=True)      
+        df.drop('timestamp', axis=1, inplace=True) 
+        df.drop('epoch', axis=1, inplace=True)       
         df['RCO2'] = pd.to_numeric(df['RCO2'], errors='coerce')
         df['Tdb_scd30'] = pd.to_numeric(df['Tdb_scd30'], errors='coerce')
         df['RH_scd30'] = pd.to_numeric(df['RH_scd30'], errors='coerce')
@@ -134,6 +148,7 @@ class Particle(Sensor):
         #else: # else it exists so append without writing the header
         #  df.to_csv(filename, mode='a', header=False)
         #  print(filename)        
+        df.to_sql('cbasdef',engine,if_exists='append',index_label='timestamp')
         with open(filename, 'a') as f:
           df.to_csv(f, mode='a', header=f.tell()==0,na_rep = "NaN")
     except Exception as e:
