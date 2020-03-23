@@ -22,7 +22,7 @@ user = config.user  # From sqlconfig.py
 DB = 'cbas'  #name of databases to activate 
 
 
-engine = sqlalchemy.create_engine('postgresql+psycopg2://'+user+':'+passwd+'@34.68.85.80/'+DB)
+engine = sqlalchemy.create_engine('postgresql+psycopg2://'+user+':'+passwd+'@'+config.host+'/'+DB)
 
 TOKEN = config.Particle_key
 IDS = []
