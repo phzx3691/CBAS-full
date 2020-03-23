@@ -5,3 +5,4 @@ test/sqlconfig.py
 *.pyc
 *.swp
 /env
+Pub_Sub_ingestion/env
