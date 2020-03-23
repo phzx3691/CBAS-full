@@ -101,26 +101,21 @@ class Particle(Sensor):
         df['RCO2'] = pd.to_numeric(df['RCO2'], errors='coerce')
         df['Tdb_scd30'] = pd.to_numeric(df['Tdb_scd30'], errors='coerce')
         df['RH_scd30'] = pd.to_numeric(df['RH_scd30'], errors='coerce')
-
         df['TVOC'] = pd.to_numeric(df['TVOC'], errors='coerce')
         df['ECO2'] = pd.to_numeric(df['ECO2'], errors='coerce')
-
         df['PM25'] = pd.to_numeric(df['PM25'], errors='coerce')
         df['PM1'] = pd.to_numeric(df['PM1'], errors='coerce')
         df['PM10'] = pd.to_numeric(df['PM10'], errors='coerce')
         df['PM25'] = pd.to_numeric(df['PM25'], errors='coerce')
-
         df['Air'] = pd.to_numeric(df['Air'], errors='coerce')
-
         df['Lux'] = pd.to_numeric(df['Lux'], errors='coerce')
-
         df['P_BME680'] = pd.to_numeric(df['P_BME680'], errors='coerce')
         df['Alt_BME680'] = pd.to_numeric(df['Alt_BME680'], errors='coerce')
         df['RH_BME680'] = pd.to_numeric(df['RH_BME680'], errors='coerce')
         df['Tdb_BME680'] = pd.to_numeric(df['Tdb_BME680'], errors='coerce')
-
         df['battery'] = pd.to_numeric(df['battery'], errors='coerce')
 
+        df['sensor'] = device
         def setNaN(d, key, value, comparetype):
             d[key] = d[key].where(d[key] == -99, np.NaN)
             #d[key] = d[key].where(d[key] == -98, np.NaN)
