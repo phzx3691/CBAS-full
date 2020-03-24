@@ -6,3 +6,4 @@ tqdm
 scipy
 pymysql
 sqlalchemy
+psycopg2

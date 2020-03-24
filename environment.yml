@@ -6,12 +6,12 @@ dependencies:
   - pandas
   - glob2
   - plotly
-  - pylint
   - dash
   - tqdm
   - scipy
   - tmux
   - pymysql
   - sqlalchemy
+  - psycopg2
 
 

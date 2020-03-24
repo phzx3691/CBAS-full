@@ -15,8 +15,6 @@ import sqlalchemy
 import psycopg2
 
 
-
-
 passwd = config.passwd  # From sqlconfig.py
 user = config.user  # From sqlconfig.py
 DB = 'cbas'  #name of databases to activate 
