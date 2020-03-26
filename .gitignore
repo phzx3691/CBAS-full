@@ -6,3 +6,4 @@ test/sqlconfig.py
 *.swp
 /env
 Pub_Sub_ingestion/env
+sensor-feed/env
