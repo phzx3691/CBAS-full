@@ -220,7 +220,7 @@ class Particle(Sensor):
   def loadDevices(self):
 
     f = open("particle_sensors.csv", "r",encoding='utf8')
-
+    print(f.encoding)
     ids = []
 
     for i, l in enumerate(f):
