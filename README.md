@@ -108,6 +108,7 @@ conda config --set auto_activate_base false
 
 * Create `config.py`:
   
+  In folders where script is running, a config.py is needed
   ```bash
   nano config.py
   ```
