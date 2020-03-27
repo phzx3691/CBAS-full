@@ -13,6 +13,8 @@ from ParticleCloud import ParticleCloud # from ParticleCloud.py
 import pymysql
 import sqlalchemy
 import psycopg2
+#from scipy.constants import convert_temperature
+
 
 
 passwd = config.passwd  # From sqlconfig.py
@@ -114,6 +116,7 @@ class Particle(Sensor):
         df['Tdb_BME680'] = pd.to_numeric(df['Tdb_BME680'], errors='coerce')
         df['battery'] = pd.to_numeric(df['battery'], errors='coerce')
         df['sensor'] = device
+        #df["Tdb_BME680F"] = convert_temperature(df["Tdb_BME680"], 'Celsius', 'F')
 
         def setNaN(d, key, value, comparetype):
             d[key] = d[key].where(d[key] == -99, np.NaN)

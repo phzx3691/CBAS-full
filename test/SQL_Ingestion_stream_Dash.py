@@ -21,6 +21,79 @@ print("Import Complete")
 
 
 
+
+
+
+
+def tz_NYC(d): #timezone conversion
+    for key in d.values():
+        key.index = key.index.tz_convert('America/New_York')
+    return d
+
+
+def CtoF(dataframes):
+    for d in dataframes.values():
+        d["Tdb_BME680F"] = convert_temperature(d["Tdb_BME680"].dropna(), 'Celsius', 'F')
+
+def setNaN(dataframes, key, value, comparetype="less"):
+       for d in dataframes.values():
+           if comparetype == "less":
+               d[key][d[key] < value] = np.NaN
+           elif comparetype == "greater":
+               d[key][d[key] > value] = np.NaN
+           else:
+               d[key][d[key] == value] = np.NaN
+
+
+ttickformatstops=[
+    go.layout.xaxis.Tickformatstop(
+        dtickrange=[None, 1000], value="%e-%b <br> %a <br> %I:%M:%S.%L %p"),
+    go.layout.xaxis.Tickformatstop(
+        dtickrange=[1000, 60000], value="%e-%b <br> %a <br> %I:%M:%S %p"),
+    go.layout.xaxis.Tickformatstop(
+        dtickrange=[60000, 3600000], value="%e-%b <br> %a <br> %I:%M %p"),
+    go.layout.xaxis.Tickformatstop(
+        dtickrange=[3600000, 86400000], value="%e-%b <br> %a <br> %I:%M %p"),
+    go.layout.xaxis.Tickformatstop(
+        dtickrange=[86400000, 604800000], value="%e-%b <br> %a"),
+    go.layout.xaxis.Tickformatstop(
+        dtickrange=[604800000, "M1"], value="%e-%b"),
+    go.layout.xaxis.Tickformatstop(
+        dtickrange=["M1", "M12"], value="%b '%y"),
+    go.layout.xaxis.Tickformatstop(
+        dtickrange=["M12", None], value="%Y Y")
+]
+
+llayoutFont = dict(
+#    family = "Franklin Gothic Book, Arial")
+    family = "Arial, Helvetica, Verdana, Franklin Gothic")
+
+
+filterCriteria_0th = [("battery", 2, "less"), ("RCO2", 0, "less"),
+                      ("RCO2", 5000, "greater"), ("Tdb_BME680", 0, "less"),
+                      ("Tdb_scd30", 0, "less"), ("Tdb_scd30", 101, "greater"),
+                      ("PM25", 5000, "greater"), ("PM25", 0, "less"),
+                      ("Lux", 100000, "greater"), ("RH_scd30", 0, "less"),
+                      ("RH_scd30", 101, "greater"), ("RH_BME680", 0, "less"),
+                      ("RH_BME680", 101, "greater"), ("Air", 20, "greater"),
+                      ("TVOC", 0, "less"),("Lux", 0, "less"),("P_BME680", 0, "less"),
+                      ("Alt_BME680", 0, "less")]
+
+
+
+#set number of points that shows up on a plot. set to 0 for all of the points
+mmaxDisplayed = 300
+
+mmarker = dict(symbol = "circle-open",
+            size = 5, 
+            maxdisplayed = mmaxDisplayed)
+
+nmarker = dict(symbol = "circle",
+            size = 5)            
+
+
+
+
 server = flask.Flask(__name__)
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -35,8 +108,8 @@ locations = pd.Series([" Wifi (Moe)"," LTE (roaming)"])
 
 colors = {
     'background': '#303030', #black
-    'DDbackground': '#d3d3d3', #
-    'DDtext': '#d3d3d3', 
+    'DDbackground': '#303030', #
+    'DDtext': '#FFFFFF', 
     'text': '#FFFFFF'  
 }
 '''
@@ -56,15 +129,6 @@ engine = sqlalchemy.create_engine('postgresql+psycopg2://'+user+':'+passwd+'@34.
 
 link = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5JRPuanz8kRkVKU6BsZReBNENKglrLQDj1CTWnM1AqpxdWdWb3BEEzSeIcuPq9rSLNwzux_1l7mJb/pub?gid=1668794547&single=true&output=csv'
 
-def tz_NYC(d): #timezone conversion
-    for key in d.values():
-        key.index = key.index.tz_convert('America/New_York')
-    return d
-
-
-def CtoF(dataframes):
-    for d in dataframes.values():
-        d["Tdb_BME680F"] = convert_temperature(d["Tdb_BME680"].dropna(), 'Celsius', 'F')
 
 
 observation =  pd.read_csv(link, parse_dates=["Timestamp_Overrode"], index_col=["Timestamp_Overrode"])
@@ -85,115 +149,77 @@ values = pd.read_sql(queryv,engine)
 query = '''
 SELECT * 
 FROM raw
-WHERE timestamp > NOW() - interval '1 day';
+WHERE timestamp > NOW() - interval '1 hour';
 '''
 
-df = pd.read_sql(query,engine,index_col=["timestamp"])
+dfbuff = pd.read_sql(query,engine,index_col=["timestamp"])
 
-sensors = df.sensor.unique()
+sensors = dfbuff.sensor.unique()
 print(sensors)
 
 
 dfs = {}
 
 for s in sensors:
-    dfs[s] = df.where(df["sensor"] == s).dropna()
+    dfs[s] = dfbuff.where(dfbuff["sensor"] == s).dropna()
 
 
 availablecolumns = pd.Series(list(dfs.values())[0].columns).sort_values()
 
 
 
-filterCriteria_0th = [("battery", 2, "less"), ("RCO2", 0, "less"),
-                      ("RCO2", 5000, "greater"), ("Tdb_BME680", 0, "less"),
-                      ("Tdb_scd30", 0, "less"), ("Tdb_scd30", 101, "greater"),
-                      ("PM25", 5000, "greater"), ("PM25", 0, "less"),
-                      ("Lux", 100000, "greater"), ("RH_scd30", 0, "less"),
-                      ("RH_scd30", 101, "greater"), ("RH_BME680", 0, "less"),
-                      ("RH_BME680", 101, "greater"), ("Air", 20, "greater"),
-                      ("TVOC", 0, "less"),("Lux", 0, "less"),("P_BME680", 0, "less"),
-                      ("Alt_BME680", 0, "less")]
-
-
-def setNaN(dataframes, key, value, comparetype="less"):
-       for d in dataframes.values():
-           if comparetype == "less":
-               d[key][d[key] < value] = np.NaN
-           elif comparetype == "greater":
-               d[key][d[key] > value] = np.NaN
-           else:
-               d[key][d[key] == value] = np.NaN
-
 
 #CtoF(dfs) # convert to Celcius
 
-dfs = tz_NYC(dfs)  # converting timezone by localizing to GMT then convert to NewYork
+#dfs = tz_NYC(dfsbuff)  # converting timezone by localizing to GMT then convert to NewYork
 
-
+'''
 for k, v, ct in filterCriteria_0th:
-  setNaN(dfs, k, v, comparetype=ct)              
-
-ttickformatstops=[
-    go.layout.xaxis.Tickformatstop(
-        dtickrange=[None, 1000], value="%e-%b <br> %a <br> %H:%M:%S.%L"),
-    go.layout.xaxis.Tickformatstop(
-        dtickrange=[1000, 60000], value="%e-%b <br> %a <br> %H:%M:%S"),
-    go.layout.xaxis.Tickformatstop(
-        dtickrange=[60000, 3600000], value="%e-%b <br> %a <br> %H:%M"),
-    go.layout.xaxis.Tickformatstop(
-        dtickrange=[3600000, 86400000], value="%e-%b <br> %a <br> %H:%M"),
-    go.layout.xaxis.Tickformatstop(
-        dtickrange=[86400000, 604800000], value="%e-%b <br> %a"),
-    go.layout.xaxis.Tickformatstop(
-        dtickrange=[604800000, "M1"], value="%e-%b"),
-    go.layout.xaxis.Tickformatstop(
-        dtickrange=["M1", "M12"], value="%b '%y"),
-    go.layout.xaxis.Tickformatstop(
-        dtickrange=["M12", None], value="%Y Y")
-]
-
-llayoutFont = dict(
-#    family = "Franklin Gothic Book, Arial")
-    family = "Arial, Helvetica, Verdana, Franklin Gothic")
-
-#set number of points that shows up on a plot. set to 0 for all of the points
-mmaxDisplayed = 300
-
-mmarker = dict(symbol = "circle-open",
-            size = 5, 
-            maxdisplayed = mmaxDisplayed)
-
-nmarker = dict(symbol = "circle",
-            size = 5)            
+  setNaN(dfsbuff, k, v, comparetype=ct)              
+'''
 
 
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets,server=server)
 
 app.layout = html.Div([
-  html.Div([
-    dcc.Dropdown(
-      id='yaxis-column',
-      options=[{'label': i, 'value': i} for i in availablecolumns],
-      value='Tdb_BME680',
-      style={'backgroundColor': colors['DDbackground'],'color': colors['text'],'box-shadow': '0px 8px 16px 0px rgba(0,0,0,0.2)' }
-      ),
-    dcc.Graph(
-      id='Live-layout',
-      #figure={'data': datatraced,'layout':layout}
-    ),
-    dcc.Interval(
-      id='interval-component',
-      interval=15*1000, # in milliseconds
-      n_intervals=0
-    )
-  ],style={'backgroundColor': colors['background']}),
-])
+    html.Div([
+        dcc.Dropdown(
+        id='yaxis-column',
+        options=[{'label': i, 'value': i} for i in availablecolumns],
+        value='Tdb_BME680',
+        style={'backgroundColor': colors['DDbackground'],'color': colors['DDbackground']}
+        )
+    ],style={}),
+    html.Div([
+        dcc.Graph(
+        id='Live-layout',
+        #figure={'data': datatraced,'layout':layout}
+        ),
+        dcc.Interval(
+        id='interval-component',
+        interval=15*1000, # in milliseconds
+        n_intervals=0
+        ),
+        dcc.Input(id="inputtxt", type="text", placeholder="X days/weeks/months",
+            debounce=True,value= "1 day"),
+        html.Div(id="outputtxt",style={'color': colors['text']})
+    ],style={'backgroundColor': colors['background']})
+],style={'backgroundColor': colors['background']})
+@app.callback(
+    Output("outputtxt", "children"),
+    [Input("inputtxt", "value")],
+)
+def update_output(inputtxt):
+    outputtxt = inputtxt
+    return "\'{}\';".format(outputtxt)
+
 
 @app.callback(Output('Live-layout', 'figure'),
               [Input('yaxis-column', 'value'),
-               Input('interval-component', 'n_intervals')])
-def update_graph_live(value,n): 
+               Input('interval-component', 'n_intervals'),
+               Input('outputtxt', 'children')])
+def update_graph_live(value,n,txt): 
 
     observation =  pd.read_csv(link, parse_dates=["Timestamp_Overrode"], index_col=["Timestamp_Overrode"])
     observation.index = observation.index.tz_localize('America/New_York',ambiguous='infer')
@@ -208,12 +234,9 @@ def update_graph_live(value,n):
     
     
 
-    query = '''
-    SELECT * 
-    FROM raw
-    WHERE timestamp > NOW() - interval '1 day';
-    '''
+    q1 = "SELECT * FROM raw WHERE timestamp > NOW() - interval "
 
+    query = q1 + txt
 
     df = pd.read_sql(query,engine,index_col=["timestamp"])
 
@@ -225,7 +248,6 @@ def update_graph_live(value,n):
 
     for s in sensors:
         dfs[s] = df.where(df["sensor"] == s).dropna()
-
 
 
     for k, v, ct in filterCriteria_0th:
@@ -286,7 +308,7 @@ def update_graph_live(value,n):
         type="date",
 #       rangeslider=dict(visible=True),
         rangeslider=dict(visible=False),
-        hoverformat="%a-%d %H:%M",
+        hoverformat="%a-%d %I:%M %p",
         #showspikes= False,
         #tickangle= 45,
         tickformatstops=ttickformatstops,
@@ -298,8 +320,6 @@ def update_graph_live(value,n):
             font=dict(size=12)))
     )
     return fig
-
-
 
 if __name__ == '__main__':
     app.run_server(debug=True, host='0.0.0.0', port = 8080)
