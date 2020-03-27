@@ -218,7 +218,7 @@ class Particle(Sensor):
   # Load device ids from particle_sensors.csv
   def loadDevices(self):
 
-    f = open("particle_sensors.csv", "r")
+    f = open("particle_sensors.csv", "r",encoding='utf8')
 
     ids = []
 
