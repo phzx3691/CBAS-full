@@ -174,7 +174,7 @@ class Particle(Sensor):
         content = content + timestamp + "," + ",".join(values) + "\n"
 
         #filename = "DA-particle-" + device + "-tele-" + self.getCurrentTime(fifteen=True) + ".csv"
-        df = pd.read_csv(StringIO(content),header= 0, converters={'timestamp': pd.Timestamp})
+        df = pd.read_csv(StringIO(content),header= 0,encoding='utf-8', converters={'timestamp': pd.Timestamp})
         print(device+"-Tele"+":  ")
         print(df)
         df = df.set_index(pd.DatetimeIndex(df['timestamp']))
