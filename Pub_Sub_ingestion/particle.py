@@ -93,7 +93,7 @@ class Particle(Sensor):
         #f.close()
         #Print(content)
 
-        df = pd.read_csv(StringIO(data),header= 0, converters={'timestamp': pd.Timestamp})
+        df = pd.read_csv(StringIO(data),header= 0,encoding='utf-8', converters={'timestamp': pd.Timestamp})
         print(device+":  ")
         print(df)
         df = df.set_index(pd.DatetimeIndex(df['timestamp']))

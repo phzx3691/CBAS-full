@@ -20,8 +20,7 @@ import psycopg2
 print("Import Complete")
 
 
-
-
+#################################### to config file #################################################################
 
 
 
@@ -92,6 +91,16 @@ nmarker = dict(symbol = "circle",
             size = 5)            
 
 
+#################################### to config file #################################################################
+
+
+######### SQL setup
+passwd = sqlconfig.passwd  # From sqlconfig.py
+user = sqlconfig.user  # From sqlconfig.py
+DB = 'cbas'  #name of databases to activate 
+
+engine = sqlalchemy.create_engine('postgresql+psycopg2://'+user+':'+passwd+'@34.68.85.80/'+DB)
+######### SQL setup
 
 
 server = flask.Flask(__name__)
@@ -103,8 +112,8 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 
 Plot_wwidth = 700
-Plot_hheight = 400
-locations = pd.Series([" Wifi (Moe)"," LTE (roaming)"])
+Plot_hheight = 900
+
 
 colors = {
     'background': '#303030', #black
@@ -112,18 +121,13 @@ colors = {
     'DDtext': '#FFFFFF', 
     'text': '#FFFFFF'  
 }
+
 '''
 colors = {
     'background': '#FFFFFF', #white
     'text': '#000000'
 }
 '''
-
-passwd = sqlconfig.passwd  # From sqlconfig.py
-user = sqlconfig.user  # From sqlconfig.py
-DB = 'cbas'  #name of databases to activate 
-
-engine = sqlalchemy.create_engine('postgresql+psycopg2://'+user+':'+passwd+'@34.68.85.80/'+DB)
 
 
 
@@ -296,9 +300,9 @@ def update_graph_live(value,n,txt):
     fig.update_layout(
     title_text=Valtitle[0],
     uirevision= value,
-    autosize=True,
+    autosize=False,
     #width = Plot_wwidth,
-    #height = Plot_hheight,
+    height = Plot_hheight,
     font = {'color': colors['text'] },
     plot_bgcolor = colors['background'],
     paper_bgcolor = colors['background'],     
