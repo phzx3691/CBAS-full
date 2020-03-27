@@ -38,7 +38,7 @@ class Particle(Sensor):
           return device_object.connected and device_object.variables != None and "sensor" in device_object.variables
 
       IDS = self.loadDevices()
-
+      print("test")
       # Retrieve connected devices
       self.particle_cloud = ParticleCloud(TOKEN, device_ids=IDS)
       self.connected_devices = list(filter(good_device, self.particle_cloud.devices))
