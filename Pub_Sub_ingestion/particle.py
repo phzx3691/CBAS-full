@@ -223,7 +223,7 @@ class Particle(Sensor):
     start_path = os.getcwd()
     fn = "particle_sensors.csv"
     filename = os.path.join(start_path, fn)
-    f = open( filename,"r",encoding='utf8')  
+    f = open(filename,"r",encoding='utf8')  
 
     ids = []
 
