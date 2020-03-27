@@ -219,8 +219,12 @@ class Particle(Sensor):
   # Load device ids from particle_sensors.csv
   def loadDevices(self):
 
-    f = open("particle_sensors.csv", "r",encoding='utf8')
-    print(f.encoding)
+
+    start_path = os.getcwd()
+    fn = "particle_sensors.csv"
+    filename = os.path.join(start_path,"Pub_Sub_ingestion", fn)
+    f = open( filename,"r",encoding='utf8')  
+
     ids = []
 
     for i, l in enumerate(f):
