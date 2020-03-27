@@ -148,7 +148,7 @@ class Particle(Sensor):
         df.to_sql('cbasdef',engine,if_exists='append',index_label='timestamp')  
         print("data-Import-2-SQL...")  
         #print("data-skipSQL...")
-        with open(filename, 'a') as f:
+        with open(filename, 'a',encoding='utf8') as f:
           df.to_csv(f, mode='a', header=f.tell()==0,na_rep = "NaN")
     except Exception as e:
         self.log("Error", "Error with device {}".format(device))
@@ -192,7 +192,7 @@ class Particle(Sensor):
         #f.close()
         #df.to_sql('cbastele',engine,if_exists='append',index_label='timestamp')    
         print("tele-skipSQL...")        
-        with open(filename, 'a') as f:
+        with open(filename, 'a',encoding='utf8') as f:
           df.to_csv(f, mode='a', header=f.tell()==0,na_rep = "NaN")        
     except Exception as e:
         self.log("Error", "Error with device {}".format(device))
