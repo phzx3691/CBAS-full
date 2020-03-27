@@ -103,3 +103,21 @@ bash Miniconda3-latest-Linux-x86_64.sh
 ```bash
 conda config --set auto_activate_base false
 ```
+
+## Usage
+
+* Create `config.py`:
+  
+  ```bash
+  nano config.py
+  ```
+
+    Where you need the following variables:
+
+    ```
+
+    Particle_key = "XXXXXXXXXXXXXXXXXXX"
+    user = "XXXX"
+    passwd = "XXXXX"
+    host = XXX.XXX.XXX
+    ```

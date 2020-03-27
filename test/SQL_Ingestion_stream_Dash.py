@@ -63,6 +63,7 @@ ttickformatstops=[
         dtickrange=["M12", None], value="%Y Y")
 ]
 
+
 llayoutFont = dict(
 #    family = "Franklin Gothic Book, Arial")
     family = "Arial, Helvetica, Verdana, Franklin Gothic")
@@ -77,7 +78,6 @@ filterCriteria_0th = [("battery", 2, "less"), ("RCO2", 0, "less"),
                       ("RH_BME680", 101, "greater"), ("Air", 20, "greater"),
                       ("TVOC", 0, "less"),("Lux", 0, "less"),("P_BME680", 0, "less"),
                       ("Alt_BME680", 0, "less")]
-
 
 
 #set number of points that shows up on a plot. set to 0 for all of the points
@@ -100,7 +100,7 @@ user = sqlconfig.user  # From sqlconfig.py
 DB = 'cbas'  #name of databases to activate 
 
 engine = sqlalchemy.create_engine('postgresql+psycopg2://'+user+':'+passwd+'@34.68.85.80/'+DB)
-######### SQL setup
+######### SQL setup  ####needs ADJUSTMENST FOR HOST
 
 
 server = flask.Flask(__name__)
@@ -132,7 +132,7 @@ colors = {
 
 
 link = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5JRPuanz8kRkVKU6BsZReBNENKglrLQDj1CTWnM1AqpxdWdWb3BEEzSeIcuPq9rSLNwzux_1l7mJb/pub?gid=1668794547&single=true&output=csv'
-
+'''
 
 
 observation =  pd.read_csv(link, parse_dates=["Timestamp_Overrode"], index_col=["Timestamp_Overrode"])
@@ -141,6 +141,7 @@ observation.index = observation.index.tz_localize('America/New_York',ambiguous='
 notes= pd.DataFrame(observation[['note','sensor','Coord_X_m', 'Coord_Y_m', 'Coord_Z_m','Position_HumanReadable']])
 notes.sort_index( inplace=True )
 notes = notes["2020-01-01 ":"2020- "]
+'''
 
 queryv = '''
 SELECT * 
@@ -169,7 +170,6 @@ for s in sensors:
 
 
 availablecolumns = pd.Series(list(dfs.values())[0].columns).sort_values()
-
 
 
 

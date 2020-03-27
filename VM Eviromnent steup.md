@@ -80,7 +80,7 @@ This should be the env used for Plotly/Dash scripts
 * To create new env from environment.yml
 
 ```bash
-conda env create --file environment.yml
+conda create --file environment.yml
 ```
 
 need to do the .env thing
