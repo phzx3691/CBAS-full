@@ -201,9 +201,9 @@ def update_graph_live(value,n):
     notes= pd.DataFrame(observation[['note','sensor','Coord_X_m', 'Coord_Y_m', 'Coord_Z_m','Position_HumanReadable']])
     notes.sort_index( inplace=True )
 
-    todaysdt = pd.to_datetime('today').tz_localize('America/New_York').strftime("%Y-%m-%d ")
+    #todaysdt = pd.to_datetime('today').tz_localize('America/New_York').strftime("%Y-%m-%d ")
     #todaysdt = pd.to_datetime('2020-01-07')
-    yesterdt = (pd.to_datetime('today').tz_localize('America/New_York')-pd.Timedelta('1 day')).strftime("%Y-%m-%d ")
+    #yesterdt = (pd.to_datetime('today').tz_localize('America/New_York')-pd.Timedelta('1 day')).strftime("%Y-%m-%d ")
     #notes = notes[yesterdt:todaysdt]
     
     
