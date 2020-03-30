@@ -8,3 +8,5 @@ test/sqlconfig.py
 Pub_Sub_ingestion/env
 sensor-feed/env
 /pyenv
+/env
+/.vscode
