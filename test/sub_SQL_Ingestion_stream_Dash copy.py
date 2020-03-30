@@ -282,6 +282,35 @@ def update_graph_live(value,n,txt):
     #for i in range(len(locations)):
     #    dfs[i]["sensor"] = locations[i]
 
+    fig = make_subplots(
+        rows=2, cols=2, shared_xaxes=True, vertical_spacing=0.02)
+     
+
+            
+    for key in dfs.values():
+        fig.add_trace(
+            go.Scatter(x=key.index, y=key[value], name=key["sensor"].iloc[0],
+            hoverinfo= "x+y+text+name",
+            mode="markers+lines",marker = mmarker),row=1, col=1)
+
+        fig.add_trace(
+            go.Scatter(x=key.index, y=key[value], name=key["sensor"].iloc[0],
+            hoverinfo= "x+y+text+name",
+            mode="markers+lines",marker = mmarker),row=1, col=2)
+
+        
+        fig.add_trace(
+            go.Scatter(x=key.index, y=key[value], name=key["sensor"].iloc[0],
+            hoverinfo= "x+y+text+name",
+            mode="markers+lines",marker = mmarker),row=2, col=1)
+
+        fig.add_trace(
+            go.Scatter(x=key.index, y=key[value], name=key["sensor"].iloc[0],
+            hoverinfo= "x+y+text+name",
+            mode="markers+lines",marker = mmarker),row=2, col=2)
+      
+
+
 
     '''
     fig.add_trace(
