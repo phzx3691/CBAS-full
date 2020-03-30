@@ -1,4 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\samgt\\Anaconda3\\envs\\CBAS-Full\\python.exe",
-    "python.dataScience.jupyterServerURI": "http://localhost:8888/?token=2ee463f44298c8ba12dfe0b87af1be6c1ff17b2b03152369"
+    "python.pythonPath": "pyenv\\Scripts\\python.exe",
+    "python.dataScience.jupyterServerURI": "http://localhost:8888/?token=09dbddde2c5a1b5bd481176839b17d5ec2ff390287a932da"
 }

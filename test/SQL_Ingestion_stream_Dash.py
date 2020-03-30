@@ -14,7 +14,7 @@ import glob
 import flask
 from tqdm import tqdm
 from scipy.constants import convert_temperature
-import sqlconfig # From sqlconfig.py
+#import sqlconfig # From sqlconfig.py
 import sqlalchemy
 import psycopg2
 print("Import Complete")
@@ -202,7 +202,7 @@ app.layout = html.Div([
         ),
         dcc.Interval(
         id='interval-component',
-        interval=15*1000, # in milliseconds
+        interval=5000*1000, # in milliseconds
         n_intervals=0
         ),
         dcc.Input(id="inputtxt", type="text", placeholder="X days/weeks/months",
@@ -281,13 +281,37 @@ def update_graph_live(value,n,txt):
 
     #for i in range(len(locations)):
     #    dfs[i]["sensor"] = locations[i]
+   
+    fig = make_subplots(
+        rows=2, cols=2, shared_xaxes=True, vertical_spacing=0.02)
+     
 
+            
     for key in dfs.values():
         fig.add_trace(
             go.Scatter(x=key.index, y=key[value], name=key["sensor"].iloc[0],
             hoverinfo= "x+y+text+name",
-            mode="markers+lines",marker = mmarker))#hovertext=d.Position_HumanReadable,
+            mode="markers+lines",marker = mmarker),row=1, col=1)
 
+        fig.add_trace(
+            go.Scatter(x=key.index, y=key[value], name=key["sensor"].iloc[0],
+            hoverinfo= "x+y+text+name",
+            mode="markers+lines",marker = mmarker),row=1, col=2)
+
+        
+        fig.add_trace(
+            go.Scatter(x=key.index, y=key[value], name=key["sensor"].iloc[0],
+            hoverinfo= "x+y+text+name",
+            mode="markers+lines",marker = mmarker),row=2, col=1)
+
+        fig.add_trace(
+            go.Scatter(x=key.index, y=key[value], name=key["sensor"].iloc[0],
+            hoverinfo= "x+y+text+name",
+            mode="markers+lines",marker = mmarker),row=2, col=2)
+      
+
+
+    '''
     fig.add_trace(
     go.Scatter(
         x=notes.index,
@@ -296,11 +320,12 @@ def update_graph_live(value,n,txt):
         mode="markers",
         marker = nmarker,
         hovertext=notes.note)) 
+    '''    
 
     fig.update_layout(
     title_text=Valtitle[0],
     uirevision= value,
-    autosize=False,
+    autosize=True,
     #width = Plot_wwidth,
     height = Plot_hheight,
     font = {'color': colors['text'] },
@@ -326,5 +351,5 @@ def update_graph_live(value,n,txt):
     return fig
 
 if __name__ == '__main__':
-    app.run_server(debug=True, host='0.0.0.0', port = 8080)
+    app.run_server(debug=True, host='0.0.0.0', port = 8081)
     #app.run_server(debug=True)

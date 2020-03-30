@@ -7,3 +7,4 @@ test/sqlconfig.py
 /env
 Pub_Sub_ingestion/env
 sensor-feed/env
+/pyenv
