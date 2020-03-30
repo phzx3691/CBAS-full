@@ -282,12 +282,8 @@ def update_graph_live(value,n,txt):
     #for i in range(len(locations)):
     #    dfs[i]["sensor"] = locations[i]
 
-    for key in dfs.values():
-        fig.add_trace(
-            go.Scatter(x=key.index, y=key[value], name=key["sensor"].iloc[0],
-            hoverinfo= "x+y+text+name",
-            mode="markers+lines",marker = mmarker))#hovertext=d.Position_HumanReadable,
 
+    '''
     fig.add_trace(
     go.Scatter(
         x=notes.index,
@@ -296,7 +292,7 @@ def update_graph_live(value,n,txt):
         mode="markers",
         marker = nmarker,
         hovertext=notes.note)) 
-
+    '''
     fig.update_layout(
     title_text=Valtitle[0],
     uirevision= value,

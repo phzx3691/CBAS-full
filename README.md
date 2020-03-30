@@ -108,7 +108,8 @@ conda config --set auto_activate_base false
 
 * Create `config.py`:
   
-  In folders where script is running, a config.py is needed
+  In folders where script is running, a `config.py` is needed
+
   ```bash
   nano config.py
   ```
@@ -118,7 +119,7 @@ conda config --set auto_activate_base false
     ```
 
     Particle_key = "XXXXXXXXXXXXXXXXXXX"
-    user = "XXXX"
-    passwd = "XXXXX"
+    user = "[USER]"
+    passwd = "[PASSWORD]"
     host = XXX.XXX.XXX
     ```
