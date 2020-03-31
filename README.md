@@ -28,6 +28,8 @@ You can use either Anaconda or Pyenv for this, depending on the situation.
   1. Install:
      * Python 3+
      * Condas or virtual env
+     * Github
+       * Sould be using `dependable` branch
   2. Python libraries  
      1. [Anaconda](#Miniconda-Setup)
      2. [pip](#Pyenv-Setup)
