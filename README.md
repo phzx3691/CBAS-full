@@ -36,7 +36,15 @@ You can use either Anaconda or Pyenv for this, depending on the situation.
 
      * If using `conda`, it is advised to install using `conda install` first, then `pip` for the `PyparticleIO` library.
      * For Python virtual environment just use `pip`
-  
+
+---
+
+## Clone Github repo
+
+```bash
+git clone https://github.com/phzx3691/CBAS-full.git
+```
+
 ---  
 ## Miniconda Setup
 
@@ -188,10 +196,10 @@ venv installation
 ---
 ---
 
-Now all necessary software should be installed.
-*In order to run these scripts, you must have your virtual environment activated!
+Now all necessary software should be installed.:clap:
+*Remember to activate your virtual Python environment to run any of these scripts!
 
-Last step is to create a config file that keeps keys/credentials for scripts. This should be in the `.gitignore` file.
+Last step is to create a config file that keeps keys/credentials for scripts. This should be already added to the `.gitignore` file.
 
 ## Config-file
 
@@ -203,10 +211,10 @@ Last step is to create a config file that keeps keys/credentials for scripts. Th
   nano config.py
   ```
 
-    Where you need the following variables:
+    Where you need the following:
 
     ```
-
+    # .gitignore should include reference to config.py
     Particle_key = "XXXXXXXXXXXXXXXXXXX"
     user = "[USER]"
     passwd = "[PASSWORD]"
@@ -215,4 +223,4 @@ Last step is to create a config file that keeps keys/credentials for scripts. Th
 
 `Particle_key` is only needed for ingestion script
 `host` not needed yet
-This will be changed to just having the same file in the root directory of this repo later...
+Later this will be modified to just having this config file in the root directory of this repo...
