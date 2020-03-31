@@ -172,7 +172,6 @@ for s in sensors:
 availablecolumns = pd.Series(list(dfs.values())[0].columns).sort_values()
 
 
-
 #CtoF(dfs) # convert to Celcius
 
 #dfs = tz_NYC(dfsbuff)  # converting timezone by localizing to GMT then convert to NewYork
@@ -252,6 +251,7 @@ def update_graph_live(value,n,txt):
 
     for s in sensors:
         dfs[s] = df.where(df["sensor"] == s).dropna()
+
 
 
     for k, v, ct in filterCriteria_0th:

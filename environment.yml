@@ -13,5 +13,4 @@ dependencies:
   - pymysql
   - sqlalchemy
   - psycopg2
-
-
+  - jupyterlab
