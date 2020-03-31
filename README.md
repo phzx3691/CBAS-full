@@ -11,6 +11,37 @@ Using Particle mesh devices for environmental sensor streaming and Plotly/Dash f
   
 #### Conda installation
 
+
+
+#### Download and install Miniconda
+
+* Download latest version of Miniconda here:  
+https://docs.conda.io/en/latest/miniconda.html
+
+
+```bash
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+```
+
+* Then run the installation script:
+
+```bash
+bash Miniconda3-latest-Linux-x86_64.sh
+```
+
+* Run through set-up and Condas should be installed, restart terminal to finish install
+
+* If you'd prefer that conda's base environment not be activated on startup:  
+
+```bash
+conda config --set auto_activate_base false
+```
+
+---
+
+## Creating environment
+
+
 * [Docs.conda.io - Specifying a location for an environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#specifying-a-location-for-an-environment)
 * Create environment from the environment.yml file:
   
