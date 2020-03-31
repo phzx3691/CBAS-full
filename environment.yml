@@ -9,7 +9,6 @@ dependencies:
   - dash
   - tqdm
   - scipy
-  - tmux
   - pymysql
   - sqlalchemy
   - psycopg2
