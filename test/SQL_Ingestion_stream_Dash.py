@@ -246,7 +246,7 @@ def update_graph_live(value,n,txt):
     sensors = sorted(df.sensor.unique())
     print(sensors)
 
-
+    
     dfs = {}
 
     for s in sensors:
@@ -298,6 +298,7 @@ def update_graph_live(value,n,txt):
         hovertext=notes.note)) 
 
     fig.update_layout(
+    coloraxis=dict(colorscale='viridis'),    
     title_text=Valtitle[0],
     uirevision= value,
     autosize=False,
