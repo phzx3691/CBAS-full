@@ -14,7 +14,7 @@ import glob
 import flask
 from tqdm import tqdm
 from scipy.constants import convert_temperature
-#import sqlconfig # From sqlconfig.py
+import sqlconfig # From sqlconfig.py
 import sqlalchemy
 import psycopg2
 print("Import Complete")
