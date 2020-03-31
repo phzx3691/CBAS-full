@@ -1,5 +1,6 @@
 # CBAS-full
-Using Particle mesh devices for environmental sensor streaming and Plotly/Dash for visualization
+
+Project using Particle mesh devices for environmental sensor streaming and Plotly/Dash for visualization.
 
 ## Resources
 
@@ -15,7 +16,6 @@ Using Particle mesh devices for environmental sensor streaming and Plotly/Dash f
   * [Pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html#user-guide)
 * Cheat Sheets
   * [Conda](https://docs.conda.io/projects/conda/en/latest/_downloads/843d9e0198f2a193a3484886fa28163c/conda-cheatsheet.pdf)
-
   * [Tmux](https://tmuxcheatsheet.com/)
   * [Pandas](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf)
   
@@ -39,6 +39,7 @@ You can use either Anaconda or Pyenv for this, depending on the situation.
      * For Python virtual environment just use `pip`
   
 ---  
+
 ## Miniconda Setup
 
 ### Download and install Miniconda
@@ -116,16 +117,15 @@ Or
 
 * Create "vanilla" environment:
   
-
 ```bash
 conda create ---prefix ./env
 ```
 
 1. Activate the environment:
 
-```bash
-conda activate ./env
-```
+  ```bash
+  conda activate ./env
+  ```
 
 2. Install libraries:
 
@@ -192,7 +192,7 @@ venv installation
 ---
 ---
 
-Now all necessary software should be installed.:clap:
+Now all necessary software should be installed.:clap:  
 *In order to run these scripts, you must have your virtual environment activated!*
 
 Last step is to create a config file that keeps keys/credentials for scripts. This should be in the `.gitignore` file.
@@ -218,5 +218,5 @@ Last step is to create a config file that keeps keys/credentials for scripts. Th
     ```
 
 `Particle_key` is only needed for ingestion script
-`host` not needed yet
+`host` not needed yet  
 This will be changed to just having the same file in the root directory of this repo later...
