@@ -246,7 +246,7 @@ def update_graph_live(value,n,txt):
     sensors = sorted(df.sensor.unique())
     print(sensors)
 
-    
+
     dfs = {}
 
     for s in sensors:
@@ -262,11 +262,11 @@ def update_graph_live(value,n,txt):
 
     dfs = tz_NYC(dfs)  # converting timezone by localizing to GMT then convert to NewYork
 
-    inittTS = (list(dfs.values())[0].index[0]-pd.Timedelta('1 day')).strftime("%Y-%m-%d ")
+    inittTS = (list(dfs.values())[0].index[0]-pd.Timedelta('1 day')).strftime("%Y-%m-%d")
 
-    rightnow = pd.Timestamp.now().strftime("%Y-%m-%d ")
+    rightnow = pd.Timestamp.now().strftime("%Y-%m-%d")
 
-    notes = notes[inittTS:rightnow]
+    notes = notes[rightnow]
     #plot
     fig = go.Figure()
     #traceToPlot = [d for d in dfs]
