@@ -186,7 +186,7 @@ venv installation
 2. Create environment from the requirements.txt file:
   
     ```bash
-    pip install requiremants.txt
+    pip install requirements.txt
     ```
 
 ---
