@@ -9,15 +9,16 @@ Using Particle mesh devices for environmental sensor streaming and Plotly/Dash f
   * [Kaggle - SQL intro](https://www.kaggle.com/learn/intro-to-sql)
 
 * Docs
-  * [TMUX guide](https://tmuxguide.readthedocs.io/en/latest/index.html)
-  * [Miniconda Docs](https://docs.conda.io/en/latest/miniconda.html)
-  * [Dash-docs](http://dash.plotly.com/)
-  * [Pandas- Docs](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html#user-guide)
+  * [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+  * [TMUX](https://tmuxguide.readthedocs.io/en/latest/index.html)
+  * [Dash/Plotly](http://dash.plotly.com/)
+  * [Pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html#user-guide)
 * Cheat Sheets
-  * [Conda Cheet Sheet](https://docs.conda.io/projects/conda/en/latest/_downloads/843d9e0198f2a193a3484886fa28163c/conda-cheatsheet.pdf)
+  * [Conda](https://docs.conda.io/projects/conda/en/latest/_downloads/843d9e0198f2a193a3484886fa28163c/conda-cheatsheet.pdf)
 
-  * [Tmux Cheat Sheet](https://tmuxcheatsheet.com/)
-
+  * [Tmux](https://tmuxcheatsheet.com/)
+  * [Pandas](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf)
+  
 ---
 
 ## Setup
@@ -81,13 +82,13 @@ Once conda is installed and initialized, (You can do something like `conda activ
 
 There are multiple ways to create our conda environment:
 
-1. [Using environment.yml file](#environment-yml)
+1. [Using environment.yml file](#environment-yml-file)
 2. [Manual installation](#manual-install)
 3. [Using spec-file.txt](#spec-file-txt) (Platform specific)
 
 ---
 
-#### Environment-file
+#### Environment yml file
   
 1. Navigate to CBAS-full directory
 
@@ -109,27 +110,30 @@ pip install pyparticleio
 
 Or
 
-#### Manual-install
+#### Manual install
+
+1. Navigate to CBAS-full directory
 
 * Create "vanilla" environment:
+  
 
 ```bash
 conda create ---prefix ./env
 ```
 
-Activate the environment:
+1. Activate the environment:
 
 ```bash
 conda activate ./env
 ```
 
-Install libraries:
+2. Install libraries:
 
 ```bash
 conda install pandas numpy glob2 dash tqdm scipy pymysql sqlalchemy psycopg2 PYparticleIO plotly dash jupyterlab
 ```
 
-Then install one more library via pip:
+3. Then install one more library via pip:
 
 * Instal PyparticelIO
 
@@ -142,20 +146,20 @@ Or
 
 #### spec-file-txt
 
-* Create environment using spec-file[your platform].txt:
+1. Create environment using spec-file[your platform].txt:
   (*only one for win_64 at this moment)
 
 ```bash
 conda create ---prefix ./env --file spec-file[win_64].txt
 ```
 
-To activate the environment:
+2. To activate the environment:
 
 ```bash
 conda activate ./env
 ```
 
-Then install one more library via pip:
+3. Then install one more library via pip:
 
 * Instal PyparticelIO
 
@@ -188,8 +192,8 @@ venv installation
 ---
 ---
 
-Now all necessary software should be installed.
-*In order to run these scripts, you must have your virtual environment activated!
+Now all necessary software should be installed.:clap:
+*In order to run these scripts, you must have your virtual environment activated!*
 
 Last step is to create a config file that keeps keys/credentials for scripts. This should be in the `.gitignore` file.
 
