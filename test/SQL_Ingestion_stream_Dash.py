@@ -201,7 +201,7 @@ app.layout = html.Div([
         ),
         dcc.Interval(
         id='interval-component',
-        interval=15*1000, # in milliseconds
+        interval=500*1000, # in milliseconds
         n_intervals=0
         ),
         dcc.Input(id="inputtxt", type="text", placeholder="X days/weeks/months",
@@ -243,7 +243,7 @@ def update_graph_live(value,n,txt):
 
     df = pd.read_sql(query,engine,index_col=["timestamp"])
 
-    sensors = df.sensor.unique()
+    sensors = sorted(df.sensor.unique())
     print(sensors)
 
 
@@ -326,5 +326,5 @@ def update_graph_live(value,n,txt):
     return fig
 
 if __name__ == '__main__':
-    app.run_server(debug=True, host='0.0.0.0', port = 8080)
+    app.run_server(debug=True, host='0.0.0.0', port = 8081)
     #app.run_server(debug=True)
