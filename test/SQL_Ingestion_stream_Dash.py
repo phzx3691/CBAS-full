@@ -201,7 +201,7 @@ app.layout = html.Div([
         ),
         dcc.Interval(
         id='interval-component',
-        interval=15*1000, # in milliseconds
+        interval=500*1000, # in milliseconds
         n_intervals=0
         ),
         dcc.Input(id="inputtxt", type="text", placeholder="X days/weeks/months",
@@ -243,7 +243,7 @@ def update_graph_live(value,n,txt):
 
     df = pd.read_sql(query,engine,index_col=["timestamp"])
 
-    sensors = df.sensor.unique()
+    sensors = sorted(df.sensor.unique())
     print(sensors)
 
 
@@ -262,11 +262,11 @@ def update_graph_live(value,n,txt):
 
     dfs = tz_NYC(dfs)  # converting timezone by localizing to GMT then convert to NewYork
 
-    inittTS = (list(dfs.values())[0].index[0]-pd.Timedelta('1 day')).strftime("%Y-%m-%d ")
+    inittTS = (list(dfs.values())[0].index[0]-pd.Timedelta('1 day')).strftime("%Y-%m-%d")
 
-    rightnow = pd.Timestamp.now().strftime("%Y-%m-%d ")
+    rightnow = pd.Timestamp.now().strftime("%Y-%m-%d")
 
-    notes = notes[inittTS:rightnow]
+    notes = notes[rightnow]
     #plot
     fig = go.Figure()
     #traceToPlot = [d for d in dfs]
@@ -298,6 +298,7 @@ def update_graph_live(value,n,txt):
         hovertext=notes.note)) 
 
     fig.update_layout(
+    coloraxis=dict(colorscale='viridis'),    
     title_text=Valtitle[0],
     uirevision= value,
     autosize=False,
@@ -326,5 +327,5 @@ def update_graph_live(value,n,txt):
     return fig
 
 if __name__ == '__main__':
-    app.run_server(debug=True, host='0.0.0.0', port = 8080)
+    app.run_server(debug=True, host='0.0.0.0', port = 8081)
     #app.run_server(debug=True)
