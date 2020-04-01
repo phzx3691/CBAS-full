@@ -14,6 +14,7 @@ Project using Particle mesh devices for environmental sensor streaming and Plotl
   * [TMUX](https://tmuxguide.readthedocs.io/en/latest/index.html)
   * [Dash/Plotly](http://dash.plotly.com/)
   * [Pandas](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html#user-guide)
+  * [TimescaleDB](https://docs.timescale.com/latest/introduction)
 * Cheat Sheets
   * [Conda](https://docs.conda.io/projects/conda/en/latest/_downloads/843d9e0198f2a193a3484886fa28163c/conda-cheatsheet.pdf)
   * [Tmux](https://tmuxcheatsheet.com/)
@@ -64,11 +65,11 @@ https://docs.conda.io/en/latest/miniconda.html
 
 ---
 
-2. Run through promts in set-up and once installed, restart terminal to finish.
+2. Run through prompts in set-up and once installed, restart terminal to finish.
   
 3. *If you'd prefer that conda's base environment not be activated on startup:
-  (This would be so conda does not auto-activate everytime you start your terminal)
-  
+  (This would be so conda does not auto-activate every time you start your terminal)
+
   ```bash
     conda config --set auto_activate_base false
   ```
