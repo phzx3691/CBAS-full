@@ -85,10 +85,11 @@ mmaxDisplayed = 300
 
 mmarker = dict(symbol = "circle-open",
             size = 5, 
-            maxdisplayed = mmaxDisplayed)
+            maxdisplayed = mmaxDisplayed,
+            )
 
 nmarker = dict(symbol = "circle",
-            size = 5)            
+            size = 5)      
 
 
 #################################### to config file #################################################################
@@ -283,7 +284,23 @@ def update_graph_live(value,n,txt):
     #    dfs[i]["sensor"] = locations[i]
 
 
-    '''
+    fig = make_subplots(
+        rows=2, cols=1, vertical_spacing=0)
+              
+    for key in dfs.values():
+        fig.add_trace(
+            go.Scatter(x=key.index, y=key[value], name=key["sensor"].iloc[0],
+            hoverinfo= "x+y+text+name",
+            mode="markers+lines",marker = mmarker),row=1, col=1)
+
+        fig.add_trace(
+            go.Scatter(x=key.index, y=key["RCO2"], name=key["sensor"].iloc[0],
+            hoverinfo= "x+y+text+name",
+            mode="markers+lines",marker = mmarker ),row=2, col=1)
+
+
+
+        '''
     fig.add_trace(
     go.Scatter(
         x=notes.index,
@@ -292,13 +309,14 @@ def update_graph_live(value,n,txt):
         mode="markers",
         marker = nmarker,
         hovertext=notes.note)) 
-    '''
+        '''
     fig.update_layout(
+    #coloraxis=dict(colorscale='YlGnBu'),    
     title_text=Valtitle[0],
     uirevision= value,
-    autosize=False,
+    #autosize=True,
     #width = Plot_wwidth,
-    height = Plot_hheight,
+    #height = Plot_hheight,
     font = {'color': colors['text'] },
     plot_bgcolor = colors['background'],
     paper_bgcolor = colors['background'],     
@@ -315,12 +333,13 @@ def update_graph_live(value,n,txt):
         ),
 
     yaxis=go.layout.YAxis(
-        title=go.layout.yaxis.Title(
-            text=" (" + Valunit[0]+ " )",
-            font=dict(size=12)))
+        #title=go.layout.yaxis.Title(
+        #   text=" (" + Valunit[0]+ " )",
+        #    font=dict(size=12))
+        )
     )
     return fig
 
 if __name__ == '__main__':
-    app.run_server(debug=True, host='0.0.0.0', port = 8080)
+    app.run_server(debug=True, host='0.0.0.0', port = 8082)
     #app.run_server(debug=True)

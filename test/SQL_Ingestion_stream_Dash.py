@@ -172,7 +172,6 @@ for s in sensors:
 availablecolumns = pd.Series(list(dfs.values())[0].columns).sort_values()
 
 
-
 #CtoF(dfs) # convert to Celcius
 
 #dfs = tz_NYC(dfsbuff)  # converting timezone by localizing to GMT then convert to NewYork
@@ -202,7 +201,7 @@ app.layout = html.Div([
         ),
         dcc.Interval(
         id='interval-component',
-        interval=5000*1000, # in milliseconds
+        interval=500*1000, # in milliseconds
         n_intervals=0
         ),
         dcc.Input(id="inputtxt", type="text", placeholder="X days/weeks/months",
@@ -244,7 +243,7 @@ def update_graph_live(value,n,txt):
 
     df = pd.read_sql(query,engine,index_col=["timestamp"])
 
-    sensors = df.sensor.unique()
+    sensors = sorted(df.sensor.unique())
     print(sensors)
 
 
@@ -252,6 +251,7 @@ def update_graph_live(value,n,txt):
 
     for s in sensors:
         dfs[s] = df.where(df["sensor"] == s).dropna()
+
 
 
     for k, v, ct in filterCriteria_0th:
@@ -262,11 +262,11 @@ def update_graph_live(value,n,txt):
 
     dfs = tz_NYC(dfs)  # converting timezone by localizing to GMT then convert to NewYork
 
-    inittTS = (list(dfs.values())[0].index[0]-pd.Timedelta('1 day')).strftime("%Y-%m-%d ")
+    inittTS = (list(dfs.values())[0].index[0]-pd.Timedelta('1 day')).strftime("%Y-%m-%d")
 
-    rightnow = pd.Timestamp.now().strftime("%Y-%m-%d ")
+    rightnow = pd.Timestamp.now().strftime("%Y-%m-%d")
 
-    notes = notes[inittTS:rightnow]
+    notes = notes[rightnow]
     #plot
     fig = go.Figure()
     #traceToPlot = [d for d in dfs]
@@ -281,37 +281,13 @@ def update_graph_live(value,n,txt):
 
     #for i in range(len(locations)):
     #    dfs[i]["sensor"] = locations[i]
-   
-    fig = make_subplots(
-        rows=2, cols=2, shared_xaxes=True, vertical_spacing=0.02)
-     
 
-            
     for key in dfs.values():
         fig.add_trace(
             go.Scatter(x=key.index, y=key[value], name=key["sensor"].iloc[0],
             hoverinfo= "x+y+text+name",
-            mode="markers+lines",marker = mmarker),row=1, col=1)
+            mode="markers+lines",marker = mmarker))#hovertext=d.Position_HumanReadable,
 
-        fig.add_trace(
-            go.Scatter(x=key.index, y=key[value], name=key["sensor"].iloc[0],
-            hoverinfo= "x+y+text+name",
-            mode="markers+lines",marker = mmarker),row=1, col=2)
-
-        
-        fig.add_trace(
-            go.Scatter(x=key.index, y=key[value], name=key["sensor"].iloc[0],
-            hoverinfo= "x+y+text+name",
-            mode="markers+lines",marker = mmarker),row=2, col=1)
-
-        fig.add_trace(
-            go.Scatter(x=key.index, y=key[value], name=key["sensor"].iloc[0],
-            hoverinfo= "x+y+text+name",
-            mode="markers+lines",marker = mmarker),row=2, col=2)
-      
-
-
-    '''
     fig.add_trace(
     go.Scatter(
         x=notes.index,
@@ -320,12 +296,12 @@ def update_graph_live(value,n,txt):
         mode="markers",
         marker = nmarker,
         hovertext=notes.note)) 
-    '''    
 
     fig.update_layout(
+    coloraxis=dict(colorscale='viridis'),    
     title_text=Valtitle[0],
     uirevision= value,
-    autosize=True,
+    autosize=False,
     #width = Plot_wwidth,
     height = Plot_hheight,
     font = {'color': colors['text'] },
