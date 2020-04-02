@@ -25,7 +25,7 @@ Project using Particle mesh devices for environmental sensor streaming and Plotl
 ## Setup
 
 We need to setup an isolated Python environment where the necessary libraries will be installed.
-You can use either Anaconda or Pyenv for this, depending on the situation.
+You can use either [Anaconda](https://docs.conda.io/projects/conda/en/latest/index.html) or [venv](https://docs.python.org/3/library/venv.html) for this, depending on the situation.
 
   1. Install:
      * Python 3+
