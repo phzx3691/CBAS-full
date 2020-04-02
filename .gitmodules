@@ -1,4 +1,0 @@
-[submodule "sensor-feed"]
-	path = sensor-feed
-	url = https://github.com/phzx3691/sensor-feed.git
-	branch = dependable
