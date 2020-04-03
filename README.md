@@ -119,7 +119,7 @@ Or
 * Create "vanilla" environment:
   
 ```bash
-conda create ---prefix ./env
+conda create --prefix ./env
 ```
 
 1. Activate the environment:

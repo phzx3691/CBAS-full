@@ -172,7 +172,7 @@ for s in sensors:
 availablecolumns = pd.Series(list(dfs.values())[0].columns).sort_values()
 
 
-#CtoF(dfs) # convert to Celcius
+#CtoF(dfs) # convert to Celsius
 
 #dfs = tz_NYC(dfsbuff)  # converting timezone by localizing to GMT then convert to NewYork
 
@@ -258,7 +258,7 @@ def update_graph_live(value,n,txt):
       setNaN(dfs, k, v, comparetype=ct)     
 
     
-    #CtoF(dfs) # convert from Celcius
+    #CtoF(dfs) # convert from Celsius
 
     dfs = tz_NYC(dfs)  # converting timezone by localizing to GMT then convert to NewYork
 
