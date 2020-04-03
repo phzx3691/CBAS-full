@@ -12,3 +12,4 @@ sensor-feed/env
 /test/Notebooks/.ipynb_checkpoints/Untitled*.ipynb
 /test/Notebooks/Untitled*.ipynb
 .vscode/*
+.vscode/settings.json
