@@ -99,14 +99,6 @@ engine = sqlalchemy.create_engine('postgresql+psycopg2://'+user+':'+passwd+'@34.
 ######### SQL setup  ####needs ADJUSTMENST FOR HOST
 
 
-server = flask.Flask(__name__)
-
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
-
-#start_path = '/home/sheldon/ingest/sensor-feed/csv/'
-
-
 Plot_wwidth = 700
 Plot_hheight = 900
 
@@ -128,7 +120,6 @@ colors = {
 
 
 link = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5JRPuanz8kRkVKU6BsZReBNENKglrLQDj1CTWnM1AqpxdWdWb3BEEzSeIcuPq9rSLNwzux_1l7mJb/pub?gid=1668794547&single=true&output=csv'
-'''
 
 
 observation =  pd.read_csv(link, parse_dates=["Timestamp_Overrode"], index_col=["Timestamp_Overrode"])
@@ -137,7 +128,7 @@ observation.index = observation.index.tz_localize('America/New_York',ambiguous='
 notes= pd.DataFrame(observation[['note','sensor','Coord_X_m', 'Coord_Y_m', 'Coord_Z_m','Position_HumanReadable']])
 notes.sort_index( inplace=True )
 notes = notes["2020-01-01 ":"2020- "]
-'''
+
 
 queryv = '''
 SELECT * 
@@ -146,23 +137,47 @@ FROM values;
 
 values = pd.read_sql(queryv,engine)
 
+queryt = '''
+SELECT * 
+FROM telemetry;
+'''
+
+tele = pd.read_sql(queryt,engine)
+
+
 
 query = '''
 SELECT * 
 FROM raw
-WHERE timestamp > NOW() - interval '1 hour';
+WHERE timestamp > NOW() - interval '1 minute';
 '''
 
 dfbuff = pd.read_sql(query,engine,index_col=["timestamp"])
+
+availablecolumns = pd.Series(dfbuff.columns).sort_values()
 
 sensors = dfbuff.sensor.unique()
 print(sensors)
 
 
+
+
+query = '''
+SELECT time_bucket('5 minutes', timestamp) AS five_min,
+AVG("Tdb_BME680") as temp,
+sensor as sensor
+FROM raw
+WHERE sensor IN ('protoCBAS-G')
+AND timestamp > NOW() - interval '1 hour'
+GROUP BY five_min, sensor;
+'''
+
+df = pd.read_sql(query,engine,index_col=["timestamp"])
+
+sensors = df.sensor.unique()
+print(sensors)
+
 dfs = {}
 
 for s in sensors:
-    dfs[s] = dfbuff.where(dfbuff["sensor"] == s).dropna()
-
-
-availablecolumns = pd.Series(list(dfs.values())[0].columns).sort_values()
+    dfs[s] = df.where(df["sensor"] == s).dropna()
