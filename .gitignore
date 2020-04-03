@@ -9,6 +9,6 @@ Pub_Sub_ingestion/env
 sensor-feed/env
 /pyenv
 /env
-/.vscode
 /test/Notebooks/.ipynb_checkpoints/Untitled*.ipynb
 /test/Notebooks/Untitled*.ipynb
+.vscode/*
