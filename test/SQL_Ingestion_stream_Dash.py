@@ -264,10 +264,11 @@ def update_graph_live(value,n,txt):
 
     inittTS = (list(dfs.values())[0].index[0]-pd.Timedelta('1 day')).strftime("%Y-%m-%d")
 
-    rightnow = pd.Timestamp.now().strftime("%Y-%m-%d")
+    rightnow = pd.Timestamp.now().strftime("%Y-%m-%d ")
 
-    notes = notes[rightnow]
+    #notes = notes[rightnow]
     #plot
+    notes = notes["2020-03-01 ":"2020-05-01 "]
     fig = go.Figure()
     #traceToPlot = [d for d in dfs]
     Valunit = list(values.unit.where(values.name == value).dropna())
