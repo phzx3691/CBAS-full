@@ -1,15 +1,10 @@
-name: CBAS-Full
-channels:
-  - conda-forge
-  - defaults
-dependencies:
-  - pandas
-  - glob2
-  - plotly
-  - dash
-  - tqdm
-  - scipy
-  - pymysql
-  - sqlalchemy
-  - psycopg2
-  - jupyterlab
+pandas
+glob2
+jupyterlab
+dash
+tqdm
+scipy
+pymysql
+sqlalchemy
+psycopg2
+plotly
