@@ -103,7 +103,7 @@ engine = sqlalchemy.create_engine('postgresql+psycopg2://'+user+':'+passwd+'@34.
 ######### SQL setup  ####needs ADJUSTMENST FOR HOST
 
 
-server = flask.Flask(__name__)
+app = flask.Flask(__name__)
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -183,7 +183,7 @@ for k, v, ct in filterCriteria_0th:
 
 
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets,server=server)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets,server=app)
 
 app.layout = html.Div([
     html.Div([

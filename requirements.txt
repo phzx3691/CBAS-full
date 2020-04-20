@@ -1,5 +1,6 @@
 pandas
 numpy
+jupyterlab
 glob2
 dash
 tqdm
@@ -7,7 +8,6 @@ scipy
 pymysql
 sqlalchemy
 psycopg2
-PYparticleIO
 plotly
 dash
-jupyterlab
+PYparticleIO
