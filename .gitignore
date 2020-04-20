@@ -13,3 +13,4 @@ sensor-feed/env
 /test/Notebooks/Untitled*.ipynb
 .vscode/*
 .vscode/settings.json
+Notebooks/sqlconfig.py
