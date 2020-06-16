@@ -7,7 +7,7 @@ tqdm
 scipy
 pymysql
 sqlalchemy
-psycopg2
+psycopg2-binary
 plotly
 dash
 PYparticleIO
